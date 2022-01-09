@@ -20,17 +20,21 @@ for row in ws.rows:
 """saves the final version into Output.xlsx"""   
 wb.save('Output.xlsx')
     
-  
+"""setting up an output file"""  
 outfile = open('CSVOutput.csv ', 'w')
+"""setting up the input file"""
 with open('employeedata.csv', 'r') as csv_file:
+      """Using the reader fonction to read the csv"""
       csv_reader = csv.reader(csv_file)
       header = next(csv_reader)
+      """iterating through the csv"""
       for row in csv_reader:
         NAME = row[0]
         L_NAME = row[1]
         CONTACT =row[2]
         EMAIL = row[3]
         ADDRESS =row[4]
+        """Using an if statement to edit the csv"""
         if 'helpinghands.cm' in EMAIL:
             new_email=(EMAIL).replace('helpinghands.cm','handsinhands.org')
         line = "{},{},{},{}\n".format(NAME,L_NAME, CONTACT,new_email, ADDRESS)
